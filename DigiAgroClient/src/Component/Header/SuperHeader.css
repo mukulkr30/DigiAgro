@@ -101,3 +101,50 @@
 .language-item:hover {
   background-color: #f0fdf4;
 }
+/* Logo container */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 90  px;              /* standard header height */
+  padding: 0 16px;
+}
+
+/* Logo image */
+.logo img {
+  height: 90px;              /* adjust logo size */
+  width: auto;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hover effect */
+.logo img:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .logo {
+    height: 56px;
+    padding: 0 12px;
+  }
+
+  .logo img {
+    height: 38px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .logo {
+    height: 52px;
+    padding: 0 10px;
+  }
+
+  .logo img {
+    height: 34px;
+  }
+}
