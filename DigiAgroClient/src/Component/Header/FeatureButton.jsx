@@ -3,9 +3,9 @@ import "./Header.css"
 import { NavLink } from 'react-router-dom'
 function FeatureButton({feature}) {
     const path ={
-        Home: "/",
+        Home: "/Home",
         Calculator: "/Calculator",
-        CropRecommendation: "/Croprecommendation",
+        CropRecommendation: "/",
         KnowledgeHub: "/knowledgehub",
         Weather: "/Weather"
     }

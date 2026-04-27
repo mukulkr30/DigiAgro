@@ -13,9 +13,9 @@ import Calculator from './Component/Calculator/Calculator.jsx'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App/>}>
-      <Route path="" element={<Home/>}/>
+      <Route path="Home" element={<Home/>}/>
       <Route path="Weather" element={<Weather/>}/>
-      <Route path="Croprecommendation" element={<CropRecommendation/>}/>
+      <Route path="" element={<CropRecommendation/>}/>
       <Route path="Knowledgehub" element={<KnowledgeHub/>}/>
       <Route path="Calculator" element={<Calculator/>}/>
     </Route>
