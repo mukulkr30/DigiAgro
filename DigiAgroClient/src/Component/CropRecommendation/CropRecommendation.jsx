@@ -1,8 +1,9 @@
 import React from 'react'
+import FormCard from './Formcard'
 
 function CropRecommendation() {
     return (
-        <h1>recommendation</h1>
+        <FormCard/>
     )
 }
 
