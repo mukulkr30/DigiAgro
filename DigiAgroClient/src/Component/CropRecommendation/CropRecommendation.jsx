@@ -1,5 +1,5 @@
 import React from 'react'
-import FormCard from './Formcard'
+import FormCard from './FormCard'
 
 function CropRecommendation() {
     return (
