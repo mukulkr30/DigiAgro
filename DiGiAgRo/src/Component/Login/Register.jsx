@@ -29,7 +29,7 @@ export default function Register() {
     setLoading(true);
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_VITE_REGISTER_URL}`, {
+      const res = await fetch(`${import.meta.env.VITE_REGISTER_URL}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
