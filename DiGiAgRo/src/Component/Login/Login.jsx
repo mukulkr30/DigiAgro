@@ -1,0 +1,83 @@
+import { useState } from "react";
+import { InputField } from "./InputField";
+import { PrimaryButton } from "./PrimaryButton";
+import { AuthCard } from "./AuthCard";
+import { Link } from "react-router-dom";
+import { useNavigate,useOutletContext } from "react-router-dom";
+
+export default function Login() {
+    const navigate = useNavigate();
+    const [form, setForm] = useState({ phone: "", password: "" });
+    const { setToken } = useOutletContext();
+    const handleChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value });
+    };
+    const handleLogin = async () => {
+    try {
+        const res = await fetch(`${import.meta.env.VITE_LOGIN_URL}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(form),
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+            console.log("logged in successfully yeee")
+            localStorage.setItem("token", data.data.accessToken);
+            setToken(data.data.accessToken);
+            console.log(data.data.accessToken)
+            navigate("/");
+        }
+        else {
+            alert(data.message);
+        }
+
+    } catch (err) {
+        console.error(err);
+        alert("Server error");
+    }
+};
+
+    return (
+        <AuthCard
+        title="Login"
+        subtitle=""
+        footer={
+            <>
+            Don't have an account?{" "}
+            <Link to="/Register" className="text-blue-600">
+                Sign up
+            </Link>
+            </>
+        }
+        >
+        <InputField
+            label="phone"
+            name="phone"
+            placeholder="you@example.com"
+            value={form.phone}
+            onChange={handleChange}
+        />
+
+        <InputField
+            label="Password"
+            type="password"
+            name="password"
+            placeholder="••••••••"
+            value={form.password}
+            onChange={handleChange}
+        />
+
+        <PrimaryButton text="Sign In" onClick={handleLogin} />
+        {/* for future version upgrade */}
+        {/* <div className="text-center mt-3">
+            <Link to="/forgot" className="text-blue-600 text-sm">
+            Forgot password?
+            </Link>
+        </div> */}
+        </AuthCard>
+    );
+}

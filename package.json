@@ -1,0 +1,24 @@
+{
+  "name": "digiagro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mukulkr30/DigiAgro.git"
+  },
+  "keywords": [],
+  "author": "Mukul Kumar",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mukulkr30/DigiAgro/issues"
+  },
+  "homepage": "https://github.com/mukulkr30/DigiAgro#readme",
+  "dependencies": {
+    "react-router-dom": "^7.13.0"
+  }
+}

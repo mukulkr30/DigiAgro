@@ -1,22 +1,29 @@
-import React from 'react'
-import './SuperHeader.css'
-import Logo from './Logo'
-import SearchBar from './SearchBar'
-import ProfileIcon from './ProfileIcon'
-import LanguageDropdown from './LanguageDropdown'
+import React from "react";
+import Logo from "./Logo";
+import SearchBar from "./SearchBar";
+import ProfileIcon from "./ProfileIcon";
+import LanguageDropdown from "./LanguageDropdown";
 
-function SuperHeader({ onLanguageChange }) {
+function SuperHeader({ onLanguageChange,token, setToken}) {
   return (
-    <div className="super-header">
+    <header className="flex items-center justify-between px-6 py-3 bg-green-800 text-white shadow-md">
+      
+      {/* Left */}
       <Logo />
 
-      <div className="right-section">
-        <LanguageDropdown onLanguageChange={onLanguageChange}/>
+      {/* Center */}
+      <div className="flex-1 flex justify-center px-4">
         <SearchBar />
-        <ProfileIcon />
       </div>
-    </div>
-  )
+
+      {/* Right */}
+      <div className="flex items-center gap-4">
+        {/* <LanguageDropdown onLanguageChange={onLanguageChange} /> */}
+        <ProfileIcon token={token} setToken={setToken} />
+      </div>
+
+    </header>
+  );
 }
 
-export default SuperHeader
+export default SuperHeader;

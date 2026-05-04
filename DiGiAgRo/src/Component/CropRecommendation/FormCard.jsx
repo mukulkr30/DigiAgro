@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import InputField from "./InputField";
 import InfoBox from "./InfoBox";
 import SubmitButton from "./SubmitButton";
-
+import { Navigate, useNavigate } from "react-router-dom";
 export default function FormCard() {
   const {
     register,
@@ -16,14 +16,22 @@ export default function FormCard() {
   const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data) => {
-    setLoading(true);
-    setResult(null);
-
+  setLoading(true);
+  setResult(null);
+  const token = localStorage.getItem("token");
+  console.log(token)
+  if (!token) {
+    Navigate("/Login")
+    setLoading(false);
+    return;
+  }
+  else{
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/predict`, {
+      const response = await fetch(`${import.meta.env.VITE_RECOMMENDATION_API_URL}/predict`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify({
           nitrogen: Number(data.nitrogen),
@@ -36,16 +44,24 @@ export default function FormCard() {
         }),
       });
 
+      if (!response.ok) {
+        throw new Error("Server error");
+      }
+
       const res = await response.json();
-      setResult(res.crop);
+
+      // ✅ Correct mapping
+      setResult(res.data.crop);
+
     } catch (error) {
       console.error(error);
-      setResult("Error connecting to server");
+      setResult(error.message || "Error connecting to server");
     } finally {
       setLoading(false);
-    }
-  };
-
+    }    
+  }
+  
+};
   // ✅ Close + reset handler
   const handleClose = () => {
     setResult(null);  // remove result section
@@ -53,9 +69,9 @@ export default function FormCard() {
   };
 
   return (
-    <div className="bg-gray-100 rounded-2xl shadow-lg p-6 w-full max-w-3xl mx-auto">
+    <div className="max-w-5xl mx-auto bg-green-200 p-6 rounded-2xl shadow-lg">
       <h2 className="text-2xl font-semibold text-center mb-6">
-        Tell Us About Your Farm
+        Get Crop Recommendation 
       </h2>
 
       <form

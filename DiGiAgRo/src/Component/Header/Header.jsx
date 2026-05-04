@@ -2,7 +2,7 @@ import React from 'react'
 import "./Header.css"
 import FeatureButton from './FeatureButton'
 
-const featurebutton = ["Home", "Weather", "CropRecommendation", "Calculator", "KnowledgeHub"]
+const featurebutton = ["Home", "Weather", "CropRecommendation",  "KnowledgeHub", "Calculator", "Schemes"]
 function Header() {
     return (
         <div className=' bg-green-800 w-full h-20 flex items-center justify-evenly border-green-950 border-2'>
