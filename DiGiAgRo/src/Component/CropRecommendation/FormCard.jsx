@@ -51,7 +51,7 @@ export default function FormCard() {
       const res = await response.json();
 
       // ✅ Correct mapping
-      setResult(res.data.crop);
+      setResult(res?.data?.crop || res?.crop);
 
     } catch (error) {
       console.error(error);
