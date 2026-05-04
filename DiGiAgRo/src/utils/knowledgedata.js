@@ -1,3 +1,5 @@
+import fertilizerImg from '../assets/irigation.png'
+import organic from '../assets/orgfart.png'
 // data/knowledgeData.js
 
 export const videoData = [
@@ -50,14 +52,14 @@ export const articleData = [
     id: 3,
     title: "Drip Irrigation System",
     description: "Save water with efficient irrigation methods",
-    thumbnail: "https://images.unsplash.com/photo-1598515213692-5f2521b8a5d7",
+    thumbnail: fertilizerImg,
     link: "https://en.wikipedia.org/wiki/Drip_irrigation",
   },
   {
     id: 4,
     title: "Organic Fertilizers Guide",
     description: "Natural alternatives to chemical fertilizers",
-    thumbnail: "https://images.unsplash.com/photo-1615811361523-6bd03d7748e0",
+    thumbnail: organic,
     link: "https://en.wikipedia.org/wiki/Organic_fertilizer",
   },
   {
