@@ -55,9 +55,9 @@ export default function Login() {
         }
         >
         <InputField
-            label="phone"
+            label="Phone"
             name="phone"
-            placeholder="you@example.com"
+            placeholder="Enter your phone number"
             value={form.phone}
             onChange={handleChange}
         />

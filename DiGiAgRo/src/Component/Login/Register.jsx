@@ -10,6 +10,7 @@ export default function Register() {
   const [form, setForm] = useState({
     username: "",
     email: "",
+    phone: "",
     password: "",
   });
 
@@ -20,8 +21,8 @@ export default function Register() {
   };
 
   const handleRegister = async () => {
-    if (!form.email || !form.password || !form.username) {
-      alert("Please fill required fields");
+    if (!form.email || !form.password || !form.username || !form.phone) {
+      alert("Please fill required fields (Username, Email, Phone, Password)");
       return;
     }
     console.log("email: ", form.email)

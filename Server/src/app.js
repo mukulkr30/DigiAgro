@@ -8,9 +8,10 @@ const app = express()
 
 app.use(cors(
     {
-        origin:[process.env.CORS_ORIGIN,
+        origin:[
+            process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.trim() : undefined,
             "http://localhost:5173"
-        ],
+        ].filter(Boolean),
         credentials:true
     }
 ))
@@ -19,6 +20,10 @@ app.use(cookieParser())
 app.use(express.json({limit:"16kb"}))
 app.use(express.urlencoded({extended:true,limit:"16kb"}))
 app.use(express.static("public"))
+app.use("/api/v1/users", router)
+app.use("/api/v1/recommendation", recRouter)
+app.use("/api/v1/weather",weatherRouter)
+
 // Error handling middleware
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
@@ -30,9 +35,5 @@ app.use((err, req, res, next) => {
         errors: err.errors || []
     });
 });
-app.use("/api/v1/users", router)
-app.use("/api/v1/recommendation", recRouter)
-app.use("/api/v1/weather",weatherRouter)
-
 
 export {app}

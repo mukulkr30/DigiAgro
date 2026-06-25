@@ -7,7 +7,7 @@ function Header() {
     return (
         <div className=' bg-green-800 w-full h-20 flex items-center justify-evenly border-green-950 border-2'>
             {featurebutton.map((feature)=>{
-                return <FeatureButton feature={feature}/>
+                return <FeatureButton key={feature} feature={feature}/>
             })}
         </div>
     )

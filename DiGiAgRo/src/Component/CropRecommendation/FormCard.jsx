@@ -73,7 +73,7 @@ export default function FormCard() {
       <h2 className="text-2xl font-semibold text-center mb-6">
         Get Crop Recommendation 
       </h2>
-
+000
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="grid grid-cols-1 md:grid-cols-2 gap-4"
