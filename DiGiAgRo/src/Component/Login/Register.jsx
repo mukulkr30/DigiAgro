@@ -8,8 +8,8 @@ export default function Register() {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
-    username: "",
-    email: "",
+    userName: "",
+    emailId: "",
     phone: "",
     password: "",
   });
@@ -21,12 +21,10 @@ export default function Register() {
   };
 
   const handleRegister = async () => {
-    if (!form.email || !form.password || !form.username || !form.phone) {
+    if (!form.emailId || !form.password || !form.userName || !form.phone) {
       alert("Please fill required fields (Username, Email, Phone, Password)");
       return;
     }
-    console.log("email: ", form.email)
-    console.log("password: ",form.password)
     setLoading(true);
 
     try {
@@ -58,7 +56,7 @@ export default function Register() {
   return (
     <AuthCard
       title="Create Account"
-      subtitle="Join SmartMeetPlanner today"
+      subtitle="Smart AgriCulture Plateform"
       footer={
         <>
           Already have an account?{" "}
@@ -69,18 +67,18 @@ export default function Register() {
       }
     >
       <InputField
-        label="Username"
-        name="username"
+        label="UserName"
+        name="userName"
         placeholder="Enter the Username"
-        value={form.username}
+        value={form.userName}
         onChange={handleChange}
       />
 
       <InputField
         label="Email"
-        name="email"
+        name="emailId"
         placeholder="Enter the Email"
-        value={form.email}
+        value={form.emailId}
         onChange={handleChange}
       />
       <InputField

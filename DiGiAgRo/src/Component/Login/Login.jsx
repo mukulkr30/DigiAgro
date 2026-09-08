@@ -7,32 +7,42 @@ import { useNavigate,useOutletContext } from "react-router-dom";
 
 export default function Login() {
     const navigate = useNavigate();
-    const [form, setForm] = useState({ phone: "", password: "" });
+    const [form, setForm] = useState({ username: "", password: "" });
+
     const { setToken } = useOutletContext();
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
     const handleLogin = async () => {
     try {
-        const res = await fetch(`${import.meta.env.VITE_LOGIN_URL}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(form),
-        });
+        const formData = new URLSearchParams();
+
+        formData.append("username", form.username);
+        formData.append("password", form.password);
+
+        const res = await fetch(
+            `${import.meta.env.VITE_REGISTER_URL}/token`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: formData,
+            }
+        );
 
         const data = await res.json();
 
         if (res.ok) {
-            console.log("logged in successfully yeee")
-            localStorage.setItem("token", data.data.accessToken);
-            setToken(data.data.accessToken);
-            console.log(data.data.accessToken)
+            console.log("logged in successfully yeee");
+
+            localStorage.setItem("token", data.access_token);
+            setToken(data.access_token);
+
+
             navigate("/");
-        }
-        else {
-            alert(data.message);
+        } else {
+            alert(data.detail || "Login failed");
         }
 
     } catch (err) {
@@ -56,9 +66,9 @@ export default function Login() {
         >
         <InputField
             label="Phone"
-            name="phone"
+            name="username"
             placeholder="Enter your phone number"
-            value={form.phone}
+            value={form.username}
             onChange={handleChange}
         />
 

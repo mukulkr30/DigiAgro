@@ -8,10 +8,11 @@ import Home from './Component/Home/Home.jsx'
 import Weather from './Component/Weather/Weather.jsx'
 import CropRecommendation from './Component/CropRecommendation/CropRecommendation.jsx'
 import KnowledgeHub from './Component/KnowledgeHub/KnowledgeHub.jsx'
-import Calculator from './Component/Calculator/Calculator.jsx'
 import Login from './Component/Login/Login.jsx'
 import Register from './Component/Login/Register.jsx'
 import Schemes from './Component/Schemes/Schemes.jsx'
+import PostContent from './Component/KnowledgeHub/PostContent.jsx'
+import Commodities from './Component/Commodities/Commodities.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,7 +23,8 @@ const router = createBrowserRouter(
       <Route path="Weather" element={<Weather/>}/>
       <Route path="Cropai" element={<CropRecommendation/>}/>
       <Route path="Knowledgehub" element={<KnowledgeHub/>}/>
-      <Route path="Calculator" element={<Calculator/>}/>
+      <Route path="Postcontent" element={<PostContent/>}/>
+      <Route path="Commodities" element={<Commodities/>}/>
       <Route path="schemes" element={<Schemes/>}/>
     </Route>
   )

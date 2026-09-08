@@ -6,7 +6,6 @@ export default function Header() {
       <h1 className="text-4xl font-bold mb-2">
         AI-Powered Crop Recommendation
       </h1>
-
       <p className="text-lg">
         Get personalized crop suggestions based on your soil, climate, and farming conditions
       </p>

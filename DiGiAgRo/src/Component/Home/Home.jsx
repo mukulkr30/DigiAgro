@@ -34,11 +34,11 @@ export default function Home() {
           />
 
           <FlashCard
-            title="Calculator"
+            title="Commodities"
             desc="Fertilizer & resource calculator"
             color="bg-yellow-100"
             icon="🧮"
-            link="/Calculator"
+            link="/Commodities"
           />
 
           <FlashCard
